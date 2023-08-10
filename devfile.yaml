@@ -20,6 +20,32 @@ components:
         - name: openvsx
           exposure: internal
           targetPort: 5432
+    - name: intellij
+      container:
+        image: 'quay.io/che-incubator/che-idea:next'
+        volumeMounts:
+          - name: projector-user
+            path: /home/projector-user
+        mountSources: true
+        memoryLimit: 2048M
+        memoryRequest: 32Mi
+        cpuLimit: 1500m
+        cpuRequest: 100m
+        endpoints:
+          - name: intellij
+            attributes:
+              type: main
+              cookiesAuthEnabled: true
+              urlRewriteSupported: true
+              discoverable: false
+              path: /?backgroundColor=434343&wss
+            targetPort: 8887
+            exposure: public
+            secure: false
+            protocol: https
+      attributes: {}
+    - name: projector-user
+      volume: {}
 commands:
   - id: podman-login
     exec:
