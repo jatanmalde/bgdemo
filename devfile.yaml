@@ -4,7 +4,7 @@ metadata:
 components:
   - name: builder
     container:
-      image: quay.io/devfile/universal-developer-image:ubi8-latest
+      image: registry.redhat.io/devspaces/udi-rhel8@sha256:b1f112760b2640b5e8612869536a000612837e8e247c74d3d99e9fcfbc56d2f3
       memoryRequest: 256Mi
       memoryLimit: 8Gi
       cpuRequest: 100m
@@ -13,6 +13,8 @@ components:
         - name: CONCURRENTLY_OPTS
           value: -m 1
         - name: USE_JAVA17
+          value: "true"
+        - name: KUBEDOCK_ENABLED
           value: "true"
       endpoints:
         - name: openvsx
