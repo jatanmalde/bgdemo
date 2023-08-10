@@ -12,6 +12,8 @@ components:
       env:
         - name: CONCURRENTLY_OPTS
           value: -m 1
+        - name: USE_JAVA17
+          value: 'true'
       endpoints:
         - name: openvsx
           exposure: internal
